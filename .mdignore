@@ -1,0 +1,14 @@
+.github/
+.gitignore
+go.mod
+go.sum
+LICENSE
+README.md
+
+*_test.go
+.git
+docker-compose.ts.yml
+Makefile
+Dockerfile
+.env.example
+docker-compose.test.yml

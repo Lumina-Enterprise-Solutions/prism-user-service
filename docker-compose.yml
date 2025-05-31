@@ -1,0 +1,67 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ENVIRONMENT=development
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=prism_erp
+      - DB_USER=prism
+      - DB_PASSWORD=prism123
+      - DB_SSL_MODE=disable
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=redis123
+      - REDIS_DB=0
+      - JWT_SECRET=your-secret-key
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8080
+      - SERVER_READ_TIMEOUT=10
+      - SERVER_WRITE_TIMEOUT=10
+      - LOG_LEVEL=info
+      - LOG_FORMAT=json
+      - SERVICE_NAME=prism-user-service
+      - SERVICE_VERSION=v1.0.0
+      - SERVICE_ENVIRONMENT=development
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - prism-network
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=prism
+      - POSTGRES_PASSWORD=prism123
+      - POSTGRES_DB=prism_erp
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    networks:
+      - prism-network
+
+  redis:
+    image: redis:latest
+    command: redis-server --requirepass redis123
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - prism-network
+
+volumes:
+  pg-data:
+  redis-data:
+
+networks:
+  prism-network:
+    driver: bridge
