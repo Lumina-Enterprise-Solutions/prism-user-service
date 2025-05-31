@@ -1,4 +1,8 @@
 # Prism User Service
+[![Go Report Card](https://goreportcard.com/badge/github.com/Lumina-Enterprise-Solutions/prism-user-service)](https://goreportcard.com/report/github.com/Lumina-Enterprise-Solutions/prism-user-service)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI/CD Pipeline](https://github.com/Lumina-Enterprise-Solutions/prism-user-service/actions/workflows/ci.yml/badge.svg)](https://github.com/Lumina-Enterprise-Solutions/prism-user-service/actions/workflows/ci.yml)
+[![Go Version](https://img.shields.io/badge/Go-1.20+-00ADD8.svg)](https://golang.org/dl/)
 
 ## Overview
 
